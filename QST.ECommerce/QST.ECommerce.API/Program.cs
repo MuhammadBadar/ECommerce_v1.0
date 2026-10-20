@@ -35,6 +35,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>(); // Infrastr
 builder.Services.AddScoped<IDepartmentService, DepartmentService>(); // This line will intialize the Object of DepartmentService through Constructor Injection
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>(); // Infrastructure Layer
 
+builder.Services.AddScoped<IBrandService, BrandService>(); // This line will intialize the Object of BrandService through Constructor Injection
+builder.Services.AddScoped<IBrandRepository, BrandRepository>(); // Infrastructure Layer
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
