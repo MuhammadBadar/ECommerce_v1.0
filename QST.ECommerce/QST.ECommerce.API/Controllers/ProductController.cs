@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QST.ECommerce.Application;
+using QST.ECommerce.Application.Contracts;
 using QST.ECommerce.Domain.Catalogue;
 
 namespace QST.ECommerce.API.Controllers
@@ -10,9 +11,9 @@ namespace QST.ECommerce.API.Controllers
     public class ProductController : ControllerBase
     {
 
-        private readonly IProductService _prodSvc;
+        private readonly ICatalogService _prodSvc;
 
-        public ProductController(IProductService prodSvc)
+        public ProductController(ICatalogService prodSvc)
         {
             _prodSvc = prodSvc;
         }

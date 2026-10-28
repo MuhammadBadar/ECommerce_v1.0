@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QST.ECommerce.Application;
+using QST.ECommerce.Application.Contracts;
 using QST.ECommerce.Domain.Catalogue;
 
 namespace QST.ECommerce.API.Controllers
@@ -10,9 +11,9 @@ namespace QST.ECommerce.API.Controllers
     public class DepartmentController : ControllerBase
     {
 
-        private readonly IDepartmentService _departmentService;
+        private readonly ICatalogService _departmentService;
         // Constructor Injection - means it will inject the Object (in the parameters deptSvc = new DepartmentService();
-        public DepartmentController(IDepartmentService deptSvc)
+        public DepartmentController(ICatalogService deptSvc)
         {
             _departmentService = deptSvc;
         }
@@ -27,7 +28,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpGet("GetAllDepartments")]
         public ActionResult GetAllDepartments()
         {
-            var list = _departmentService.GetAll();
+            var list = _departmentService.GetAllDepartments();
             return Ok(list);
         }
 

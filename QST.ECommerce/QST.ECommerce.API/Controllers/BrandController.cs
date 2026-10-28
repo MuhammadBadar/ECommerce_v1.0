@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QST.ECommerce.Application;
+using QST.ECommerce.Application.Contracts;
 using QST.ECommerce.Domain.Catalogue;
 using System.Net.NetworkInformation;
 
@@ -10,24 +11,24 @@ namespace QST.ECommerce.API.Controllers
     [ApiController]
     public class BrandController : ControllerBase
     {
-        private readonly IBrandService _brandSvc;
+        private readonly ICatalogService catSvc;
 
-        public BrandController(IBrandService brandSvc) // brandSvc = new BrandService();
+        public BrandController(ICatalogService brandSvc) // brandSvc = new BrandService();
         {
-            _brandSvc = brandSvc;
+            catSvc = brandSvc;
         }
 
         [HttpPost]
         public ActionResult AddBrand(Brand request)
         {
-            var result = _brandSvc.AddBrand(request);
+            var result = catSvc.AddBrand(request);
             return Ok(result);
         }
 
         [HttpGet]
         public ActionResult GetAllBrands()
         {
-            var list = _brandSvc.GetAllBrands();
+            var list = catSvc.GetAllBrands();
             return Ok(list);
         }
 

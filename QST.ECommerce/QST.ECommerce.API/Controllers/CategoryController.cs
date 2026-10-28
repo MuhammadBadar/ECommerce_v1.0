@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QST.ECommerce.Application;
+using QST.ECommerce.Application.Contracts;
 using QST.ECommerce.Domain.Catalogue;
 using QST.ECommerce.Domain.Enums;
 
@@ -10,8 +11,8 @@ namespace QST.ECommerce.API.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService) {
+        private readonly ICatalogService _categoryService;
+        public CategoryController(ICatalogService categoryService) {
             _categoryService = categoryService;
         }
 
@@ -40,7 +41,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpGet("GetCategoryById/{id}")]
         public IActionResult GetCategoryById(int id)
         {
-            var category = _categoryService.GetById(id);
+            var category = _categoryService.GetCategoryById(id);
             if (category == null)
             {
                 return NotFound();
@@ -51,7 +52,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpGet("GetAllCategories")]
         public IActionResult GetAllCategories()
         {
-            var categories = _categoryService.GetAll();
+            var categories = _categoryService.GetAllCategories();
             return Ok(categories);
         }
     }
