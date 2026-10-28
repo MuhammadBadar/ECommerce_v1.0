@@ -16,17 +16,6 @@ builder.Services.AddDbContext<CatalogDbContext>(
         options.UseMySql(conStr, ServerVersion.AutoDetect(conStr));
     });
 
-
-//builder.Services.AddDbContext<OrderingDbContext>(
-//    options =>
-//    {
-//        options.UseMySql(
-//            connectingString,
-//            ServerVersion.AutoDetect(connectingString));
-//    });
-
-
-
 // Add services to the container.
 
 builder.Services.AddScoped<IProductService, ProductService>(); // Application Layer: This line will initialize Product Service which is inside Appliaction Layer
@@ -37,6 +26,10 @@ builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>(); // In
 
 builder.Services.AddScoped<IBrandService, BrandService>(); // This line will intialize the Object of BrandService through Constructor Injection
 builder.Services.AddScoped<IBrandRepository, BrandRepository>(); // Infrastructure Layer
+
+builder.Services.AddScoped<ICategoryService, CategoryService>(); // This line will intialize the Object of CategoryService through Constructor Injection
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>(); // Infrastructure Layer
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

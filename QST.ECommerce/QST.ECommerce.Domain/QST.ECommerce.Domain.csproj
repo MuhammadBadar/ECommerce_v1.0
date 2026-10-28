@@ -10,7 +10,6 @@
     <Folder Include="Cart\" />
     <Folder Include="Inventory\" />
     <Folder Include="Shipment\" />
-    <Folder Include="Ordering\" />
     <Folder Include="Payment\" />
   </ItemGroup>
 

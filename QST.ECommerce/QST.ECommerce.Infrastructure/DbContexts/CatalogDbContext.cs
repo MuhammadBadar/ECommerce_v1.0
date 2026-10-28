@@ -25,6 +25,8 @@ public class CatalogDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Brand> Brands => Set<Brand>();
     public DbSet<Department> Departments => Set<Department>();
+    public DbSet<Category> Categories => Set<Category>();
+
     //public DbSet<Category> Categories => Set<Category>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

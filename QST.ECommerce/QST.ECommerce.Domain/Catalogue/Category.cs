@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace QST.ECommerce.Domain.Catalogue
 {
+    // Domain Entity
     public class Category
     {
-        //public int ParentCategoryId { get; set; }
         public int Id { get; set; }
-        public int DepartmentId { get; set; }
-        public string Name { get; set; }
+        public int DeptId { get; set; }
+        public string CategoryName { get; set; }
         public string Description { get; set; }
+        public bool IsActive { get; set; }
     }
 }
