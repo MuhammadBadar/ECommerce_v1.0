@@ -60,7 +60,7 @@ namespace QST.ECommerce.API.Controllers
             //ProductService prodSvc = new ProductService();
 
             //ProductService prodSvc = new ProductService();
-            _prodSvc.SaveProduct(request);
+            _prodSvc.ManageProduct(request, Domain.Enums.DBCommands.Insert);
             // Write code to save data into Database
 
             return Ok("Product is Added Successfully");

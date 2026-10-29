@@ -25,6 +25,20 @@ namespace QST.ECommerce.Infrastructure.Repositories
             return _dbContext.SaveChanges(); //It saves data of Context into DB
 
         }
+        public int UpdateDepartment(Department dept)
+        {
+            var catFromDB = GetDepartmentById(dept.Id); // it will fetch data from Database 
+            catFromDB.Name = dept.Name;
+            catFromDB.Description = dept.Description;
+            int result = _dbContext.SaveChanges();
+            return result;
+
+        }
+        public Department GetDepartmentById(int deptId)
+        {
+            var dept = _dbContext.Departments.FirstOrDefault(d => d.Id == deptId);
+            return dept;
+        }
         public List<Department> GetAllDepartments()
         {
             var list = _dbContext.Departments.ToList();
@@ -45,19 +59,18 @@ namespace QST.ECommerce.Infrastructure.Repositories
             catFromDB.Description = category.Description;
             int result = _dbContext.SaveChanges();
             return result;
-
         }
-        public bool DeleteCategory(int categoryId)
-        {
-            var catFromDB = GetCategoryById(categoryId);
-            if (catFromDB != null)
-            {
-                _dbContext.Categories.Remove(catFromDB);
-                int result = _dbContext.SaveChanges();
-                return result > 0;
-            }
-            return false;
-        }
+        //public bool DeleteCategory(int categoryId)
+        //{
+        //    var catFromDB = GetCategoryById(categoryId);
+        //    if (catFromDB != null)
+        //    {
+        //        _dbContext.Categories.Remove(catFromDB);
+        //        int result = _dbContext.SaveChanges();
+        //        return result > 0;
+        //    }
+        //    return false;
+        //}
 
         public Category GetCategoryById(int categoryId)
         {
@@ -83,6 +96,21 @@ namespace QST.ECommerce.Infrastructure.Repositories
 
             return result;
         }
+
+        public int UpdateBrand(Brand brand)
+        {
+            var fromDB = GetBrandById(brand.Id); // it will fetch data from Database 
+            fromDB.Name = brand.Name;
+            fromDB.Description = brand.Description;
+            int result = _dbContext.SaveChanges();
+            return result;
+        }
+        public Brand GetBrandById(int id)
+        {
+            var brand = _dbContext.Brands.FirstOrDefault(c => c.Id == id);
+            return brand;
+        }
+
         public List<Brand> GetAllBrands()
         {
             var list = _dbContext.Brands.ToList();
@@ -96,6 +124,19 @@ namespace QST.ECommerce.Infrastructure.Repositories
             _dbContext.Products.Add(product); // This line will save product into the Context Class
             int result = _dbContext.SaveChanges(); // It will save Product Into Database
             return result;
+        }
+        public int UpdateProduct(Product product)
+        {
+            var fromDB = GetProductById(product.Id); // it will fetch data from Database 
+            fromDB.ProductName = product.ProductName;
+            fromDB.UnitPrice = product.UnitPrice;
+            int result = _dbContext.SaveChanges();
+            return result;
+        }
+        public Product GetProductById(int id)
+        {
+            var product = _dbContext.Products.FirstOrDefault(c => c.Id == id);
+            return product;
         }
         public List<Product> GetAllProducts()
         {

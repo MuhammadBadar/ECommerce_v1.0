@@ -7,14 +7,16 @@ namespace QST.ECommerce.Application.Contracts
     {
         #region Department
 
-        int SaveDepartment(Department department);
+        int ManageDepartment(Department department, DBCommands dbCommand);
+        Department GetDepartmentById(int id);
+
         List<Department> GetAllDepartments();
 
         #endregion
 
         #region Category 
 
-        int ManageCageotry(Category cateogry, DBCommands dbCommand); // Insert, Update and Delete opertaions
+        int ManageCategory(Category cateogry, DBCommands dbCommand); // Insert, Update and Delete opertaions
         Category GetCategoryById(int id);
         List<Category> GetAllCategories();
 
@@ -22,7 +24,8 @@ namespace QST.ECommerce.Application.Contracts
 
         #region Brand
 
-        int AddBrand(Brand brand);
+        int ManageBrand(Brand brand, DBCommands dbCommand);
+        Brand GetBrandById(int id);
         List<Brand> GetAllBrands();
 
         #endregion
@@ -30,7 +33,8 @@ namespace QST.ECommerce.Application.Contracts
         #region Product
 
 
-        int SaveProduct(Product product);
+        int ManageProduct(Product product, DBCommands dbCommand);
+        Product GetProductById(int id);
 
         // Contract Rule 2
         List<Product> GetAllProducts();

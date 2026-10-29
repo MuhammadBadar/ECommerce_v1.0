@@ -11,32 +11,39 @@ namespace QST.ECommerce.Application.Contracts
     {
         #region Department
         int AddDepartment(Department dept);
-        //int UpdateDapartment(Department dept);
+        int UpdateDepartment(Department dept);
         //int DeleteDepartment(int deptId);
-        //Department GetDepartmentById(int deptId); 
+        Department GetDepartmentById(int id);
         List<Department> GetAllDepartments();
+        
+
 
         #endregion
         #region Category
 
         int AddCategory(Category category);
         int UpdateCategory(Category category);
+        Category GetCategoryById(int id);
         List<Category> GetAllCategories();
-        Category GetCategoryById(int categoryId);
+        
 
         #endregion
         #region Brand
 
         int AddBrand(Brand brand);
+        int UpdateBrand(Brand brand);
+        Brand GetBrandById(int id);
         List<Brand> GetAllBrands();
+        
+
 
         #endregion
         #region Product
 
         int AddProduct(Product product);
-        //int UpdateProduct(Product product);
+        int UpdateProduct(Product product);
         //int DeleteProduct(int id);
-        //Product GetProductById(int id);
+        Product GetProductById(int id);
         List<Product> GetAllProducts();
 
 

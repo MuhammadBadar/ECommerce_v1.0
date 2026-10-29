@@ -21,7 +21,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpPost]
         public ActionResult AddDepartment(Department dept)
         {
-            _departmentService.SaveDepartment(dept);
+            _departmentService.ManageDepartment(dept, Domain.Enums.DBCommands.Insert);
             return Ok("Department Saved Successfully");
         }
 

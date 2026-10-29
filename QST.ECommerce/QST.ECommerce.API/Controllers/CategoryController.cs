@@ -19,7 +19,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpPost("AddCategory")]
         public IActionResult AddCategory(Category category)
         {
-            _categoryService.ManageCageotry(category, DBCommands.Insert);
+            _categoryService.ManageCategory(category, DBCommands.Insert);
             // Call the service to manage the category based on the dbCommand
             // For example:
             // int result = _categoryService.ManageCageotry(category, dbCommand);
@@ -30,7 +30,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpPost("ModifyCategory")]
         public IActionResult UpdateCategory(Category category)
         {
-            _categoryService.ManageCageotry(category, DBCommands.Update);
+            _categoryService.ManageCategory(category, DBCommands.Update);
             // Call the service to manage the category based on the dbCommand
             // For example:
             // int result = _categoryService.ManageCageotry(category, dbCommand);

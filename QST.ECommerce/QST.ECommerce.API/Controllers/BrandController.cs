@@ -21,7 +21,7 @@ namespace QST.ECommerce.API.Controllers
         [HttpPost]
         public ActionResult AddBrand(Brand request)
         {
-            var result = catSvc.AddBrand(request);
+            var result = catSvc.ManageBrand(request, Domain.Enums.DBCommands.Insert);
             return Ok(result);
         }
 

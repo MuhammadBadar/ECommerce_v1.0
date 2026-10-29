@@ -3,6 +3,7 @@ using QST.ECommerce.Domain.Catalogue;
 using QST.ECommerce.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,34 @@ namespace QST.ECommerce.Application.Services
 
         #region Department
 
-        public int SaveDepartment(Department department)
+        public int ManageDepartment(Department department, DBCommands dbCommand)
         {
 
-            int resutl = _catRepo.AddDepartment(department);
-            return resutl;
-            // Implement logic to save the department to the database
-            // Return the ID of the saved department
-            //throw new NotImplementedException();
+            //int resutl = _catRepo.AddDepartment(department);
+            //return resutl;
+            int result = 0;
+            if (dbCommand == DBCommands.Insert)
+            {
+                result = _catRepo.AddDepartment(department);
+            }
+            else if (dbCommand == DBCommands.Update)
+            {
+                department.IsActive = true;
+                //int UpdateDapartment(Department dept);
+                result = _catRepo.UpdateDepartment(department);
+            }
+            else if (dbCommand == DBCommands.Delete)
+            {
+                department.IsActive = false;
+                result = _catRepo.UpdateDepartment(department);
+            }
+            return result;
         }
+        public Department GetDepartmentById(int id)
+        {
+            return _catRepo.GetDepartmentById(id);
+        }
+
         public List<Department> GetAllDepartments()
         {
             var list = _catRepo.GetAllDepartments();
@@ -40,9 +60,23 @@ namespace QST.ECommerce.Application.Services
 
         #region Category 
 
-        public int ManageCageotry(Category cateogry, DBCommands dbCommand)
+        public int ManageCategory(Category cateogry, DBCommands dbCommand)
         {
-            int result = _catRepo.AddCategory(cateogry);
+            int result = 0;
+            if (dbCommand == DBCommands.Insert)
+            {
+                result = _catRepo.AddCategory(cateogry);
+            }
+            else if (dbCommand == DBCommands.Update)
+            {
+                cateogry.IsActive = true;
+                result = _catRepo.UpdateCategory(cateogry);
+            }
+            else if (dbCommand == DBCommands.Delete)
+            {
+                cateogry.IsActive = false;
+                result = _catRepo.UpdateCategory(cateogry);
+            }
             return result;
         }
         public Category GetCategoryById(int id)
@@ -58,9 +92,31 @@ namespace QST.ECommerce.Application.Services
 
         #region Brand
 
-        public int AddBrand(Brand brand)
+        public int ManageBrand(Brand brand, DBCommands dbCommand)
         {
-            return _catRepo.AddBrand(brand);
+            //return _catRepo.AddBrand(brand);
+            int result = 0;
+            if (dbCommand == DBCommands.Insert)
+            {
+                result = _catRepo.AddBrand(brand);
+            }
+            else if (dbCommand == DBCommands.Update)
+            {
+                brand.IsActive = true;
+                //int UpdateDapartment(Department dept);
+                result = _catRepo.UpdateBrand(brand);
+            }
+            else if (dbCommand == DBCommands.Delete)
+            {
+                brand.IsActive = false;
+                result = _catRepo.UpdateBrand(brand);
+            }
+            return result;
+
+        }
+        public Brand GetBrandById(int id)
+        {
+            return _catRepo.GetBrandById(id);
         }
         public List<Brand> GetAllBrands()
         {
@@ -72,11 +128,14 @@ namespace QST.ECommerce.Application.Services
         #region Product
 
 
-        public int SaveProduct(Product product)
+        public int ManageProduct(Product product, DBCommands dbCommand)
         {
             return _catRepo.AddProduct(product);
         }
-
+        public Product GetProductById(int id)
+        {
+            return _catRepo.GetProductById(id);
+        }
         // Contract Rule 2
         public List<Product> GetAllProducts()
         {
